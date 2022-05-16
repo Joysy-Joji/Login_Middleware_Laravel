@@ -67,17 +67,13 @@
 <body>
 
 <div class="bgimg">
-    <div class="topleft">
-        <p>Logo</p>
-    </div>
+
     <div class="middle">
         <h1>WELCOME TO LANDING</h1>
         <hr>
 
     </div>
-    <div class="bottomleft">
-        <p>Some text</p>
-    </div>
+
 </div>
 <div>
 <a href="{{URL::to('/login1')}}"  >Get Start</a>
