@@ -27,6 +27,12 @@ class HomeController extends Controller
      */
     public function showLogin()
     {
+        /** @var User|null $user */
+//        $user = auth()->user();
+//        if (!empty($user)) {
+//            return redirect(route('web.dashboard'));
+//        }
+
         return view('login');
     }
 
@@ -66,6 +72,11 @@ class HomeController extends Controller
      */
     public function showRegister()
     {
+//        $user = auth()->user();
+//        if (!empty($user)) {
+//            return redirect(route('web.dashboard'));
+//        }
+
         return view('register');
     }
 
@@ -76,13 +87,8 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
-        /** @var User|null $user */
-        $user = auth()->user();
 
-        if (empty($user)) {
-            $loginUrl = route('web.login.show');
-            return redirect($loginUrl);
-        }
+        $user = auth()->user();
 
         return view('dashboard',['name' => $user->name]);
     }

@@ -76,7 +76,7 @@
 
 </div>
 <div>
-<a href="{{URL::to('/login1')}}"  >Get Start</a>
+<a href="{{ route('web.login.show') }}"  >Get Start</a>
 </div>
 </body>
 </html>

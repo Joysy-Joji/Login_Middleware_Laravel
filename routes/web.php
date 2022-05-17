@@ -19,11 +19,11 @@ Route::name('web.')
 
         Route::get('/', [HomeController::class, 'index'])->name('home');
 
-        Route::get('login', [HomeController::class, 'showLogin'])->name('login.show');
+        Route::get('login', [HomeController::class, 'showLogin'])->name('login.show')->middleware('user');
 
         Route::post('login', [HomeController::class, 'login'])->name('login');
 
-        Route::get('register', [HomeController::class, 'showRegister'])->name('register.show');
+        Route::get('register', [HomeController::class, 'showRegister'])->name('register.show')->middleware('user');
 
         Route::post('register', [HomeController::class, 'register'])->name('register');
 
