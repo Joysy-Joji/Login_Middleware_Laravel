@@ -21,17 +21,13 @@
     <div id="main">
 
         <table id="registrationTable">
-            @if(!empty($status = session('status')))
-                <span style="color: green;">{{ $status }}</span>
-            @endif
+            @include('partials.flasher')
 
             <tr>
                 <td>
                     <h2>Have An Account? </h2>
 
-                    @if(!empty($error = session('error')))
-                        <span style="color: red;">{{ $error }}</span>
-                    @endif
+                    @include('partials.flasher')
                 </td>
             </tr>
             <tr>

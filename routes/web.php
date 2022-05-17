@@ -19,7 +19,7 @@ Route::name('web.')
 
         Route::get('/', [HomeController::class, 'index'])->name('home');
 
-        Route::get('login1', [HomeController::class, 'showLogin'])->name('login.show');
+        Route::get('login', [HomeController::class, 'showLogin'])->name('login.show');
 
         Route::post('login', [HomeController::class, 'login'])->name('login');
 

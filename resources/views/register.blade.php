@@ -23,9 +23,7 @@
                 <td>
                     <h2>Registration </h2>
 
-                    @if(!empty($error = session('error')))
-                        <span style="color: red;">{{ $error }}</span>
-                    @endif
+                    @include('partials.flasher')
                 </td>
             </tr>
             <tr>

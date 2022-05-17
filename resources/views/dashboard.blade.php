@@ -17,9 +17,9 @@
 </head>
 
 <body>
-@if(!empty($status = session('status')))
-    <span style="color: green;">{{ $status }}</span>
-@endif
+
+@include('partials.flasher')
+
 <h2 style="text-align: center; font-family: 'Bookman Old Style'; font-size: xx-large; color: black">Welcome {{ $name }}</h2>
 <h1 style="color: #005cbf">Name : {{ Auth()->user()->name}}</h1>
 <h1 style="color: #005cbf">Email : {{ Auth()->user()->email}}</h1>

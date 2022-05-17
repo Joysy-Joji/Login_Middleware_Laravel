@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-
-
 class HomeController extends Controller
 {
     /**
@@ -19,7 +17,6 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-
         return view('welcome');
     }
 
@@ -30,26 +27,21 @@ class HomeController extends Controller
      */
     public function showLogin()
     {
-
         return view('login');
-
     }
 
     /**
      * Login the user and redirect to Dashboard.
      *
      * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function login(Request $request)
     {
-
         $email = strtolower($request->input('email'));
         $password = $request->input('password');
         $remember = $request->input('remember');
         $user = User::where('email', $email)->first();
-
-
 
         if (!empty($user)) {
 
@@ -57,16 +49,13 @@ class HomeController extends Controller
                 return back()->with('error', 'Sorry, Invalid password.');
             }
 
-           if(Auth::attempt(['email' => $email,'password' => $password],$remember)){
+            if(Auth::attempt(['email' => $email, 'password' => $password], $remember)){
                $dashboardUrl = route('web.dashboard');
-               return redirect($dashboardUrl)->with('status', "Login  successful");
-           }
-
-            auth()->user();
-//            dd(Auth::user());
-
+               return redirect($dashboardUrl)->with('status', "Login successful");
+            }
 
         }
+
         return back()->with('error', 'Sorry, Invalid email or password.');
     }
 
@@ -83,14 +72,19 @@ class HomeController extends Controller
     /**
      * Show dashboard
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function dashboard()
     {
+        /** @var User|null $user */
+        $user = auth()->user();
 
-        $name=(Auth::user()->name);
-        return view('dashboard',['name' => $name]);
+        if (empty($user)) {
+            $loginUrl = route('web.login.show');
+            return redirect($loginUrl);
+        }
 
+        return view('dashboard',['name' => $user->name]);
     }
 
     /**
@@ -120,24 +114,17 @@ class HomeController extends Controller
         return redirect($loginUrl)->with('status', "Registration successful. Please login.");
     }
 
+    /**
+     * Logout the login user.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function logout()
     {
+        auth()->logout();
         $loginUrl = route('web.login.show');
-        Auth()->logout();
+
         return redirect($loginUrl);
     }
 
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
