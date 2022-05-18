@@ -76,10 +76,13 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
-
         $user = auth()->user();
+        $usernamearray = explode(" ", $user->name);
+        $lastnamearray = explode(" ", $usernamearray[1]);
+        $lastname=$lastnamearray[0];
+        $lastnamefirstCharacter = substr($lastname, 0, 1);
 
-        return view('dashboard',['name' => $user->name]);
+        return view('dashboard',['name' => $usernamearray[0] . " " .$lastnamefirstCharacter]);
     }
 
     /**
@@ -122,12 +125,24 @@ class HomeController extends Controller
         return redirect($loginUrl);
     }
 
+    /**
+     * show user profile edit page
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function editUser($id)
     {
         $userid = User::find($id);
+
         return view('edit',compact($userid));
     }
 
+    /**
+     * user profile updation
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateuser()
     {
         $userid  = Auth::user()->id;
@@ -135,6 +150,7 @@ class HomeController extends Controller
         $user->update([
             'name' => request('name')
         ]);
+
         return redirect()->route('web.dashboard')->with('status','Profile updated');
 
     }
