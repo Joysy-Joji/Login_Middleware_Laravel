@@ -101,18 +101,18 @@
         font-weight:bold;
         font-family: 'Comfortaa', cursive;
 
-        background-color: black;
+        background-color: white;
         user-select:none;
     }
     #main{
         width:500px;
         margin:auto;
-        border:1px solid #eee;
+        border:1px solid black;
         margin-top:100px;
         font-family: 'Comfortaa', cursive;
         position:relative;
         border-radius:4px;
-        box-shadow: 0 0 3px #eee;
+        box-shadow: 0 0 3px black;
     }
     table{
         margin:auto;
@@ -126,7 +126,7 @@
         padding:10px;
         border-radius:3px;
         border:none;
-        border:1px solid #eee;
+        border:1px solid black;
         width:405px;
         outline:none;
         font-family: 'Comfortaa', cursive;
@@ -146,7 +146,7 @@
     h2{
         font-size: 35px;
         font-family: 'Comfortaa', cursive;
-        color:blue;
+        color:black;
     }
     #info{
         padding:10px;

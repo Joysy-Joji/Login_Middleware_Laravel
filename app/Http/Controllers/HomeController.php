@@ -152,7 +152,6 @@ class HomeController extends Controller
         ]);
 
         return redirect()->route('web.dashboard')->with('status','Profile updated');
-
     }
 
 }

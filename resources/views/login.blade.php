@@ -49,7 +49,7 @@
 
         <input type="checkbox" name="remember" checked>
         <span class="checkmark"></span>
-        <label style="color: white; font-size: medium">Remember Me</label>
+        <label style="color: black; font-size: medium">Remember Me</label>
     </td>
 </tr>
  <tr>
@@ -82,13 +82,13 @@
         font-weight:bold;
         font-family: 'Comfortaa', cursive;
 
-        background-color: black;
+        background-color: white;
         user-select:none;
     }
     #main{
         width:500px;
         margin:auto;
-        border:1px solid #eee;
+        border:1px solid black;
         margin-top:100px;
         font-family: 'Comfortaa', cursive;
         position:relative;
@@ -107,7 +107,7 @@
         padding:10px;
         border-radius:3px;
         border:none;
-        border:1px solid #eee;
+        border:1px solid black;
         width:405px;
         outline:none;
         font-family: 'Comfortaa', cursive;
@@ -127,7 +127,8 @@
     h2{
         font-size: 35px;
         font-family: 'Comfortaa', cursive;
-        color:blue;
+        color:black
+    ;
     }
     #info{
         padding:10px;
