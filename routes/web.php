@@ -31,6 +31,10 @@ Route::name('web.')
 
         Route::get('logout', [HomeController::class, 'logout'])->name('logout');
 
+        Route::get('editUser/{id}', [HomeController::class, 'editUser'])->name('editUser');
+
+        Route::post('updateuser', [HomeController::class, 'updateuser'])->name('updateuser');
+
 
     });
 

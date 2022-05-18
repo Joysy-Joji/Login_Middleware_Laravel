@@ -27,12 +27,6 @@ class HomeController extends Controller
      */
     public function showLogin()
     {
-        /** @var User|null $user */
-//        $user = auth()->user();
-//        if (!empty($user)) {
-//            return redirect(route('web.dashboard'));
-//        }
-
         return view('login');
     }
 
@@ -72,11 +66,6 @@ class HomeController extends Controller
      */
     public function showRegister()
     {
-//        $user = auth()->user();
-//        if (!empty($user)) {
-//            return redirect(route('web.dashboard'));
-//        }
-
         return view('register');
     }
 
@@ -131,6 +120,23 @@ class HomeController extends Controller
         $loginUrl = route('web.login.show');
 
         return redirect($loginUrl);
+    }
+
+    public function editUser($id)
+    {
+        $userid = User::find($id);
+        return view('edit',compact($userid));
+    }
+
+    public function updateuser()
+    {
+        $userid  = Auth::user()->id;
+        $user = User::find($userid);
+        $user->update([
+            'name' => request('name')
+        ]);
+        return redirect()->route('web.dashboard')->with('status','Profile updated');
+
     }
 
 }
