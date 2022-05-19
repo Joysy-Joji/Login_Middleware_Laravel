@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\CreateValidationRequest;
 
 class HomeController extends Controller
 {
@@ -91,8 +92,9 @@ class HomeController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function register(Request $request)
+    public function register(CreateValidationRequest $request)
     {
+        $request->validated();
         $email = strtolower($request->input('email'));
 
         $userExists = User::where('email', $email)->exists();
