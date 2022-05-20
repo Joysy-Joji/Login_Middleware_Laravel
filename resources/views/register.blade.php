@@ -29,21 +29,20 @@
             <tr>
 
                 <td><input type="text" placeholder="Name"  name="name" id="nameleader" ></td>
-                @error('name') <p class="alert-danger"> {{ $message }}</p> @enderror
+
             </tr>
 
 
             <tr>
                 <td><input type="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Email" name="email" id="emailid"></td>
-                @error('email') <p class="alert-danger"> {{ $message }}</p> @enderror
+
             </tr>
             <tr>
                 <td><input type="password" placeholder="Password" name="password"   id="password" ></td>
-                @error('password') <p class="alert-danger"> {{ $message }}</p> @enderror
-            </tr>
+
             <tr>
                 <td><input type="password" placeholder="Confirm Password"   onkeyup="cpass_check()" name="cpassword" id="cpassword" ></td>
-                @error('cpassword') <p class="alert-danger"> {{ $message }}</p> @enderror
+
                 <td><h3 id="xx" style="color:red"></h3></td>
             </tr>
             <tr>

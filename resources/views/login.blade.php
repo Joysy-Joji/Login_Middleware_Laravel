@@ -21,7 +21,7 @@
     <div id="main">
 
         <table id="registrationTable">
-            @include('partials.flasher')
+{{--            @include('partials.flasher')--}}
 
             <tr>
                 <td>
@@ -30,14 +30,18 @@
                     @include('partials.flasher')
                 </td>
             </tr>
+
             <tr>
 
-                <td><input type="email" placeholder="email"  name="email" id="nameleader" required="required"></td>
+                <td><input type="email" placeholder="email"  name="email" id="emailid"  ></td>
+
+
             </tr>
 
 
             <tr>
-                <td><input type="password"   placeholder="password" name="password" id="emailid" required></td>
+                <td><input type="password"   placeholder="password" name="password" id="passwordid"  ></td>
+
             </tr>
 
 

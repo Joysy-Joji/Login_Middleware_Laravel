@@ -26,8 +26,8 @@ class CreateValidationRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required|min:10|max:15',
-            'cpassword' => 'required|min:10|max:15',
+            'password' => 'required|min:5|max:15',
+            'cpassword' => 'required|min:5|max:15',
         ];
     }
 }
