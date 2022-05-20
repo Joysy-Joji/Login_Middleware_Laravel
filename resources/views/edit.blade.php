@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<form action="{{ route('web.updateuser')  }}"  method="POST">
+<form action="{{ route('web.edituser')  }}"  method="POST">
 
     @csrf
 

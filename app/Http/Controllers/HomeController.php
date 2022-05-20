@@ -133,7 +133,7 @@ class HomeController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function editUser($id)
+    public function showEdituser($id)
     {
         $userid = User::find($id);
 
@@ -145,7 +145,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function updateuser()
+    public function edituser()
     {
         $userid  = Auth::user()->id;
         $user = User::find($userid);

@@ -31,9 +31,9 @@ Route::name('web.')
 
         Route::get('logout', [HomeController::class, 'logout'])->name('logout');
 
-        Route::get('editUser/{id}', [HomeController::class, 'editUser'])->name('editUser');
+        Route::get('edituser/{id}', [HomeController::class, 'showEdituser'])->name('edituser.show');
 
-        Route::post('updateuser', [HomeController::class, 'updateuser'])->name('updateuser');
+        Route::post('edituser', [HomeController::class, 'edituser'])->name('edituser');
 
 
     });
