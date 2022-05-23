@@ -1,5 +1,23 @@
-<html>
-<head>
+@extends('partials.layout')
+
+@section('body')
+    <body>
+
+    @include('partials.flasher')
+    <table style="text-align: center">
+        <tr><td><h2 style="text-align: center; font-family: 'Bookman Old Style'; font-size: xx-large; color: black">Welcome {{ $name }}</h2></td></tr>
+        <tr>   <td><h1 style="color: #005cbf">Name : {{ Auth()->user()->name}}</h1></td></tr>
+        <tr><td><h1 style="color: #005cbf">Email : {{ Auth()->user()->email}}</h1></td></tr>
+        <tr><td><a href="{{ URL::to('edituser',Auth()->user()->id) }}" class="btn btn-primary">EDIT</a></td></tr>
+        <tr>
+            <td><a  href="{{ URL::to('logout') }}" class="btn">LOGOUT</a></td>
+        </tr>
+    </table>
+
+    </body>
+@endsection
+
+@section('styles')
     <style>
         body{
             align-content: center;
@@ -17,20 +35,5 @@
             cursor: pointer;
         }
     </style>
-</head>
+@endsection
 
-<body>
-
-@include('partials.flasher')
-<table style="text-align: center">
-    <tr><td><h2 style="text-align: center; font-family: 'Bookman Old Style'; font-size: xx-large; color: black">Welcome {{ $name }}</h2></td></tr>
-     <tr>   <td><h1 style="color: #005cbf">Name : {{ Auth()->user()->name}}</h1></td></tr>
-<tr><td><h1 style="color: #005cbf">Email : {{ Auth()->user()->email}}</h1></td></tr>
-<tr><td><a href="{{ URL::to('edituser',Auth()->user()->id) }}" class="btn btn-primary">EDIT</a></td></tr>
-<tr>
-        <td><a  href="{{ URL::to('logout') }}" class="btn">LOGOUT</a></td>
-    </tr>
-</table>
-</body>
-</body>
-</html>

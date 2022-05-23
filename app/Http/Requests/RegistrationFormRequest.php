@@ -2,19 +2,8 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class CreateValidationRequest extends FormRequest
+class RegistrationFormRequest extends BaseFormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -27,7 +16,7 @@ class CreateValidationRequest extends FormRequest
             'name' => 'required',
             'email' => 'required',
             'password' => 'required|confirmed|min:5',
-            'password_confirmation' => 'required|min:5',
+
         ];
     }
 }

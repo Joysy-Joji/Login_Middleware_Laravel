@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginFormRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\CreateValidationRequest;
+use App\Http\Requests\RegistrationFormRequest;
 
 class HomeController extends Controller
 {
@@ -18,7 +19,9 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        return view('welcome');
+        return view('welcome',[
+        'title' => 'Welcome'
+        ]);
     }
 
     /**
@@ -28,7 +31,9 @@ class HomeController extends Controller
      */
     public function showLogin()
     {
-        return view('login');
+        return view('login', [
+            'title' => 'Login'
+        ]);
     }
 
     /**
@@ -37,7 +42,7 @@ class HomeController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function login(Request $request)
+    public function login(LoginFormRequest $request)
     {
         $email = strtolower($request->input('email'));
         $password = $request->input('password');
@@ -67,7 +72,9 @@ class HomeController extends Controller
      */
     public function showRegister()
     {
-        return view('register');
+        return view('register', [
+            'title' => 'Registration'
+        ]);
     }
 
     /**
@@ -92,7 +99,7 @@ class HomeController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function register(CreateValidationRequest $request)
+    public function register(RegistrationFormRequest $request)
     {
         $request->validated();
         $email = strtolower($request->input('email'));
