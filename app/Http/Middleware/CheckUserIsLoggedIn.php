@@ -17,24 +17,11 @@ class CheckUserIsLoggedIn
      */
     public function handle(Request $request, Closure $next)
     {
-//$route = $request->route()->getName('web.login.show','web.register.show');
-//if(Auth::check()){
-//    in_array([
-//        redirect()->route('web.dashboard')
-//    )]
-//}
-//else{
-//    return $next($request);
-//}
-
-
-
         if(Auth::check()){
+            return  redirect()->route('web.dashboard');
 
-            return $next($request);
         }else{
-            return  redirect()->route('web.login.show');
+            return $next($request);
         }
-
     }
 }

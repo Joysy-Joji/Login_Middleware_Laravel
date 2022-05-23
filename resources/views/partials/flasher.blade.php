@@ -12,4 +12,3 @@
 
 @error('password')  <span style="color: red;">{{ $message }}</span> @enderror<br>
 
-@error('cpassword') <span style="color: red;">{{ $message }}</span> @enderror

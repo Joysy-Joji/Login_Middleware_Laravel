@@ -27,7 +27,7 @@
                 <td>
                     <h2>Have An Account? </h2>
 
-                    @include('partials.flasher')
+{{--                    @include('partials.flasher')--}}
                 </td>
             </tr>
 

@@ -37,7 +37,7 @@ class HomeController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function login(CreateValidationRequest $request)
+    public function login(Request $request)
     {
         $email = strtolower($request->input('email'));
         $password = $request->input('password');

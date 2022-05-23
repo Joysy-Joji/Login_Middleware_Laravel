@@ -41,7 +41,7 @@
                 <td><input type="password" placeholder="Password" name="password"   id="password" ></td>
 
             <tr>
-                <td><input type="password" placeholder="Confirm Password"   onkeyup="cpass_check()" name="cpassword" id="cpassword" ></td>
+                <td><input type="password" placeholder="Confirm Password"   onkeyup="cpass_check()" name="password_confirmation" id="cpassword" ></td>
 
                 <td><h3 id="xx" style="color:red"></h3></td>
             </tr>
@@ -60,19 +60,19 @@
 
 <script>
 
-    function cpass_check(){
-
-        var passw=document.getElementById("password").value;
-        var cpassw=document.getElementById("cpassword").value;
-        if(passw!=cpassw){
-            document.getElementById("xx").innerHTML="MISSMATCH"
-            document.getElementById("bt").style.display = 'none';
-        }
-        else{
-            document.getElementById("xx").style.display = 'none';
-            document.getElementById("bt").style.display = 'block';
-        }
-    }
+    // function cpass_check(){
+    //
+    //     var passw=document.getElementById("password").value;
+    //     var cpassw=document.getElementById("cpassword").value;
+    //     if(passw!=cpassw){
+    //         document.getElementById("xx").innerHTML="MISSMATCH"
+    //         document.getElementById("bt").style.display = 'none';
+    //     }
+    //     else{
+    //         document.getElementById("xx").style.display = 'none';
+    //         document.getElementById("bt").style.display = 'block';
+    //     }
+    // }
 </script>
 
 </body>
