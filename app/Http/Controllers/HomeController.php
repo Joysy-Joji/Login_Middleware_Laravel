@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginFormRequest;
 use App\Models\User;
+use App\Models\User_login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -55,7 +56,13 @@ class HomeController extends Controller
                 return back()->with('error', 'Sorry, Invalid password.');
             }
 
+
             if(Auth::attempt(['email' => $email, 'password' => $password], $remember)){
+                $user = User_login::create([
+                    'user_id' => Auth::user()->id,
+                    'email'     => $email,
+                    'password'  => bcrypt($request->input('password')),
+                ]);
                $dashboardUrl = route('web.dashboard');
                return redirect($dashboardUrl)->with('status', "Login successful");
             }
@@ -84,13 +91,14 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
+        $user_logins = User_login::paginate(1);
         $user = auth()->user();
         $usernamearray = explode(" ", $user->name);
         $lastnamearray = explode(" ", $usernamearray[1]);
         $lastname=$lastnamearray[0];
         $lastnamefirstCharacter = substr($lastname, 0, 1);
 
-        return view('dashboard',['name' => $usernamearray[0] . " " .$lastnamefirstCharacter]);
+        return view('dashboard',['name' => $usernamearray[0] . " " .$lastnamefirstCharacter,'title' => 'Dashboard'],compact('user_logins'));
     }
 
     /**
@@ -144,7 +152,7 @@ class HomeController extends Controller
     {
         $userid = User::find($id);
 
-        return view('edit',compact($userid));
+        return view('edit',['title' => 'Edit Profile'],compact($userid));
     }
 
     /**

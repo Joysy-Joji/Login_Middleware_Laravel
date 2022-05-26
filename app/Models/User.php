@@ -21,6 +21,12 @@ class User extends Authenticatable
 
     protected  $table = 'users';
 
+    public function loginTimes()
+    {
+        return $this->hasMany(User_login::class,'user_id','id');
+
+    }
+
     /**
      * The attributes that are mass assignable.
      *
