@@ -91,7 +91,7 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
-        $user_logins = User_login::paginate(1);
+        $user_logins = User_login::where('user_id', '=', Auth::user()->id)->paginate(1);
         $user = auth()->user();
         $usernamearray = explode(" ", $user->name);
         $lastnamearray = explode(" ", $usernamearray[1]);
