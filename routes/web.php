@@ -35,6 +35,8 @@ Route::name('web.')
 
         Route::post('edituser', [HomeController::class, 'edituser'])->name('edituser');
 
+        Route::get('delete_userlogins/{login_id}', [HomeController::class, 'delete_userlogins'])->name('delete_userlogins');
+
 
     });
 

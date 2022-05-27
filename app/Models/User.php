@@ -18,13 +18,15 @@ class User extends Authenticatable
 
     use HasApiTokens, HasFactory, Notifiable;
 
-
+    protected $primaryKey = 'id';
     protected  $table = 'users';
 
-    public function loginTimes()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function user_login()
     {
         return $this->hasMany(User_login::class,'user_id','id');
-
     }
 
     /**

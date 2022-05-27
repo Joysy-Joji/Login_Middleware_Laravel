@@ -91,7 +91,7 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
-        $user_logins = User_login::where('user_id', '=', Auth::user()->id)->paginate(1);
+        $user_logins = User_login::where('user_id', '=', Auth::user()->id)->paginate(3);
         $user = auth()->user();
         $usernamearray = explode(" ", $user->name);
         $lastnamearray = explode(" ", $usernamearray[1]);
@@ -150,7 +150,7 @@ class HomeController extends Controller
      */
     public function showEdituser($id)
     {
-        $userid = User::find($id);
+        $userid = User::find(decrypt($id));
 
         return view('edit',['title' => 'Edit Profile'],compact($userid));
     }
@@ -171,4 +171,17 @@ class HomeController extends Controller
         return redirect()->route('web.dashboard')->with('status','Profile updated');
     }
 
+    /**
+     * user logins details deletion
+     *
+     * @param $login_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function delete_userlogins($login_id)
+    {
+        $data = User_login::find($login_id);
+        $data->delete();
+
+        return redirect()->route('web.dashboard')->with('status','Data deleted');
+    }
 }

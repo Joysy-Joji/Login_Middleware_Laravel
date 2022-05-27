@@ -8,7 +8,7 @@
         <tr><td><h2 style="text-align: center; font-family: 'Bookman Old Style'; font-size: xx-large; color: black">Welcome {{ $name }}</h2></td></tr>
 {{--        <tr>   <td><h1 style="color: #005cbf">Name : {{ Auth()->user()->name}}</h1></td></tr>--}}
         <tr><td><h1 style="color: #005cbf">Email : {{ Auth()->user()->email}}</h1></td></tr>
-        <tr><td><a href="{{ URL::to('edituser',Auth()->user()->id) }}" class="a">EDIT</a></td></tr>
+        <tr><td><a href="{{ URL::to('edituser',encrypt(Auth()->user()->id)) }}" class="a">EDIT</a></td></tr>
         <tr>
             <td><a  href="{{ URL::to('logout') }}" class="btn">LOGOUT</a></td>
         </tr>
@@ -19,7 +19,7 @@
 
             <th scope="col">No</th>
             <th scope="col">Email</th>
-            <th scope="col">Login Time</th>
+            <th scope="col">Recent Login Time</th>
 
             <th scope="col">Action</th>
 
@@ -35,7 +35,7 @@
 
                 <td>
 {{--                    <a href="" class="b">Edit</a>--}}
-                    <a href=" " class="bt">Delete</a>
+                    <a href=" {{ URL::to('delete_userlogins',$user_login->login_id) }}" class="bt" onclick=" return confirm('Do You Want To Delete')">Delete</a>
                 </td>
             </tr>
         @endforeach
