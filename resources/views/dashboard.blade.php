@@ -54,14 +54,28 @@
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript">
 
+
+
+
             $(document).ready(function() {
                 $('#logintable').DataTable( {
-                {{--"ajax": "{{ route('web.dashboard') }}",--}}
-                    // data:{
-                    //
-                    // }
+                    processing:true,
+                    info:true,
+
+                    {{--ajax:"{{ route('web.dashboard') }}",--}}
+                    
+
                 });
             });
+
+
+            $(function () {
+                $ajaxSetup({
+
+                })
+            })
+
+
         </script>
 
 
