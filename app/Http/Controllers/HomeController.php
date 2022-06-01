@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginFormRequest;
 use App\Models\User;
 use App\Models\User_login;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -183,5 +184,12 @@ class HomeController extends Controller
         $data->delete();
 
         return redirect()->route('web.dashboard')->with('status','Data deleted');
+    }
+
+    public function loginAttempts()
+    {
+        $user_logins = User_login::where('user_id', '=', Auth::user()->id)->get();
+
+        return response()->json($user_logins);
     }
 }

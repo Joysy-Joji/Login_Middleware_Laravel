@@ -37,6 +37,8 @@ Route::name('web.')
 
         Route::get('delete_userlogins/{login_id}', [HomeController::class, 'delete_userlogins'])->name('delete_userlogins');
 
+        Route::get('login/attempts', [HomeController::class, 'loginAttempts'])->name('login.attempts')->middleware('user_auth');
+
 
     });
 
