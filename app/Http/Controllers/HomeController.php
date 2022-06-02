@@ -22,7 +22,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         return view('welcome',[
-        'title' => 'Welcome'
+            'title' => 'Welcome'
         ]);
     }
 
@@ -64,8 +64,8 @@ class HomeController extends Controller
                     'email'     => $email,
                     'password'  => bcrypt($request->input('password')),
                 ]);
-               $dashboardUrl = route('web.dashboard');
-               return redirect($dashboardUrl)->with('status', "Login successful");
+                $dashboardUrl = route('web.dashboard');
+                return redirect($dashboardUrl)->with('status', "Login successful");
             }
 
         }
@@ -80,6 +80,7 @@ class HomeController extends Controller
      */
     public function showRegister()
     {
+        dd(1);
         return view('register', [
             'title' => 'Registration'
         ]);
@@ -178,7 +179,7 @@ class HomeController extends Controller
      * @param $login_id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function delete_userlogins($login_id)
+    public function deleteUserlogins($login_id)
     {
         $data = User_login::find($login_id);
         $data->delete();
